@@ -1,14 +1,28 @@
+#include <NodeInitializer.h>
+#include <PasswordManager.h>
+#include <ProbabilisticCracker.h>
+#include <PasswordCracker.h>
 
-#include <FileManager.h>
+
+using namespace std;
 
 int main() {
 
-    bool rs = FileManager::Unzip("2AK");
+    srand (time(nullptr));
 
-    if(rs)
-        std::cout << "password was correct" << std::endl;
-    else
-        std::cout << "password was incorrect" << std::endl;
+    // generate all posible passwords
+    PasswordManager passwordManager;
+
+    { // create cube && passwords
+        NodeInitializer initializer;
+        std::vector<Node*> nodes = initializer.createNodes();
+        initializer.linkNodes(nodes);
+
+        passwordManager.generatePasswords(nodes);
+    }
+
+    ProbabilisticCracker probabilisticCracker(passwordManager);
+    probabilisticCracker.crack();
 
     return 0;
 }

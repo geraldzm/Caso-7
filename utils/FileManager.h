@@ -1,3 +1,6 @@
+#ifndef CASO_7_FILEMANAGER_H
+#define CASO_7_FILEMANAGER_H
+
 #include <iostream>
 #include <stdexcept>
 #include <cstdio>
@@ -8,10 +11,14 @@ class FileManager
 
 public:
 
+    static bool isPasswordCorrect(std::string pPassword) {
+        return pPassword == "2AK";
+    }
+
     static bool Unzip(const char* password) {
 
         // build command
-        std::string command =  "unzip -P ";
+        std::string command =  "unzip -P";
         command.append(password);
         command.append(R"( ../resources/caso\ 7\ test_legacy\ encryption.zip -d ../resources)");
 
@@ -46,3 +53,5 @@ public:
     }
 
 };
+
+#endif //CASO_7_FILEMANAGER_H
