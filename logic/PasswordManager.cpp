@@ -3,8 +3,6 @@
 
 void PasswordManager::generatePasswords(std::vector<Node *> &pNodes) {
 
-    std::cout << "Creating passwords" << std::endl;
-
     for(auto &node: pNodes) {
         std::vector<std::string> passwordNode = getPasswordFromNode(node, '0');
         passwords.insert(passwords.end(), passwordNode.begin(), passwordNode.end());
@@ -12,10 +10,6 @@ void PasswordManager::generatePasswords(std::vector<Node *> &pNodes) {
 
     for(std::string &s: passwords)
         passwordsHistogram[s]++;
-
-    for(auto &s: passwordsHistogram)
-        cout << s.second << "\t" << s.first<< endl;
-
 }
 
 std::vector<std::string> PasswordManager::getPasswordFromNode(Node *&pNode, const char &pPast) {

@@ -1,16 +1,14 @@
 #include <NodeInitializer.h>
 #include <PasswordManager.h>
 #include <ProbabilisticCracker.h>
-#include <PasswordCracker.h>
 
 
 using namespace std;
 
 int main() {
 
-    srand (time(nullptr));
+    srand (time(nullptr)); // random seed
 
-    // generate all posible passwords
     PasswordManager passwordManager;
 
     { // create cube && passwords
